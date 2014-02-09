@@ -1,0 +1,49 @@
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-item .ab-icon:before {
+	content: "\f106";
+	top: 2px;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-sub-wrapper {
+	overflow-y: auto;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li .ab-item {
+	opacity: 0.3;
+	overflow: hidden;
+	position: relative;
+	text-overflow: ellipsis;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li .ab-item:hover,
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li.is-active .ab-item {
+	opacity: 1;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle.has-many {
+	position: static;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle.has-many .ab-sub-wrapper {
+	position: absolute;
+	right: 0;
+	left: 0;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle.has-many .ab-submenu li {
+	float: left;
+	position: relative;
+	white-space: normal;
+	width: 33%;
+}
+
+@media only screen and (min-width: 1024px) {
+	#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle.has-many .ab-submenu li {
+		width: 25%;
+	}
+}
+
+@media only screen and (min-width: 1280px) {
+	#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle.has-many .ab-submenu li {
+		width: 20%;
+	}
+}
