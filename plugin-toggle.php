@@ -28,8 +28,7 @@ class PluginToggle {
 	 * The URL of the current request.
 	 *
 	 * @since 1.0.0
-	 * @access protected
-	 * @var string
+	 * @type string
 	 */
 	protected $current_url;
 
@@ -65,58 +64,101 @@ class PluginToggle {
 		}
 
 		$plugins = $this->get_plugins();
-		$screen  = is_admin() ? get_current_screen() : '';
 
 		if ( empty( $plugins ) ) {
 			return;
 		}
 
-		// Add the top-level toolbar node.
-		$toolbar->add_node( array(
-			'id'    => 'plugin-toggle',
-			'title' => sprintf( '<span class="ab-icon"></span> <span class="ab-label">%s</span>', __( 'Plugins' ) ),
-			'href'  => self_admin_url( 'plugins.php' ),
-			'meta'  => array(
-				'class' => ( count( $plugins ) > 20 ) ? 'has-many' : '',
-			),
-		) );
-
-		// Add a group to the node.
-		$toolbar->add_node( array(
-			'id'     => 'plugin-toggle_group',
-			'group'  => true,
-			'parent' => 'plugin-toggle',
-		) );
+		$this->add_top_level_node( $toolbar, count( $plugins ) );
+		$this->add_group_to_node( $toolbar );
 
 		$visible_plugins = 0;
 		foreach ( $plugins as $plugin_file => $plugin_name ) {
-			// If the plugin is network activated or is a network only plugin
-			// and this isn't a network admin screen, don't add it to the list.
-			if (
-				is_multisite() &&
-				( ! is_admin() || ! $screen->in_admin( 'network' ) ) &&
-				( is_plugin_active_for_network( $plugin_file ) || is_network_only_plugin( $plugin_file ) ) )
-			{
-				continue;
+			if ( ! $this->is_network_related_plugin( $plugin_file ) ) {
+				$this->add_plugin_to_group( $toolbar, $plugin_file, $plugin_name );
+				$visible_plugins++;
 			}
-
-			// Add the plugin node.
-			$toolbar->add_node( array(
-				'id'     => 'plugin-toggle_' . sanitize_title( $plugin_name ),
-				'title'  => $plugin_name,
-				'href'   => $this->get_plugin_toggle_url( $plugin_file ),
-				'parent' => 'plugin-toggle_group',
-				'meta'   => array(
-					'class' => is_plugin_active( $plugin_file ) ? 'is-active' : '',
-				),
-			) );
-			$visible_plugins ++;
 		}
 
 		// Remove the top-level node if there aren't any visible plugins.
 		if ( ! $visible_plugins ) {
 			$toolbar->remove_node( 'plugin-toggle' );
 		}
+	}
+
+	/**
+	 * Add top level toolbar node.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param WP_Admin_Bar $toolbar      Toolbar object.
+	 * @param integer      $plugin_count Number of plugins installed.
+	 */
+	protected function add_top_level_node( WP_Admin_Bar $toolbar, $plugin_count ) {
+		$node_args = array(
+			'id'    => 'plugin-toggle',
+			'title' => sprintf( '<span class="ab-icon"></span> <span class="ab-label">%s</span>', __( 'Plugins', 'plugin-toggle' ) ),
+			'href'  => self_admin_url( 'plugins.php' ),
+			'meta'  => array(
+				'class' => ( $plugin_count > 20 ) ? 'has-many' : '',
+			),
+		);
+		$toolbar->add_node( $node_args );
+	}
+
+	/**
+	 * Add group to toolbar node.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param WP_Admin_Bar $toolbar Toolbar object.
+	 */
+	protected function add_group_to_node( WP_Admin_Bar $toolbar ) {
+		$node_args = array(
+			'id'     => 'plugin-toggle-group',
+			'group'  => true,
+			'parent' => 'plugin-toggle',
+		);
+		$toolbar->add_node( $node_args );
+	}
+
+	/**
+	 * Add plugin to group.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param WP_Admin_Bar $toolbar     Toolbar object.
+	 * @param string       $plugin_file Plugin basename.
+	 * @param string       $plugin_name Plugin name.
+	 */
+	protected function add_plugin_to_group( WP_Admin_Bar $toolbar, $plugin_file, $plugin_name ) {
+		$node_args = array(
+			'id'     => 'plugin-toggle_' . sanitize_title( $plugin_name ),
+			'title'  => $plugin_name,
+			'href'   => $this->get_plugin_toggle_url( $plugin_file ),
+			'parent' => 'plugin-toggle-group',
+			'meta'   => array(
+				'class' => is_plugin_active( $plugin_file ) ? 'is-active' : '',
+			),
+		);
+		$toolbar->add_node( $node_args );
+	}
+
+	/**
+	 * Check if the plugin is network activated, or is a network only plugin and this isn't a network admin screen.
+	 *
+	 * @since 1.1.0
+	 *
+	 * @param string $plugin_file Plugin basename.
+	 *
+	 * @return bool True if plugin is network activated, or is a network only plugin and this isn't a network admin screen.
+	 */
+	protected function is_network_related_plugin( $plugin_file ) {
+		$screen  = is_admin() ? get_current_screen() : '';
+
+		return is_multisite() &&
+			( ! is_admin() || ! $screen->in_admin( 'network' ) ) &&
+			( is_plugin_active_for_network( $plugin_file ) || is_network_only_plugin( $plugin_file ) );
 	}
 
 	/**
@@ -127,49 +169,22 @@ class PluginToggle {
 	 * @param string $plugin_file Plugin basename.
 	 * @return string
 	 */
-	public function get_plugin_toggle_url( $plugin_file ) {
-		$is_active   = is_plugin_active( $plugin_file );
-		$plugins_url = self_admin_url( 'plugins.php' );
-
-		// Generate a link to activate or deactivate a plugin.
-		if ( $is_active ) {
-			$href = wp_nonce_url(
-				add_query_arg(
-					array(
-						'action'                   => 'deactivate',
-						'plugin'                   => $plugin_file,
-						'plugintoggle_redirect_to' => $this->get_current_url(),
-					),
-					$plugins_url
-				),
-				'deactivate-plugin_' . $plugin_file
-			);
-		} else {
-			$href = wp_nonce_url(
-				add_query_arg(
-					array(
-						'action'                   => 'activate',
-						'plugin'                   => $plugin_file,
-						'plugintoggle_redirect_to' => $this->get_current_url(),
-					),
-					$plugins_url
-				),
-				'activate-plugin_' . $plugin_file
-			);
+	protected function get_plugin_toggle_url( $plugin_file ) {
+		$action = 'activate';
+		if ( is_plugin_active( $plugin_file ) ) {
+			$action = 'deactivate';
 		}
 
-		return $href;
-	}
+		$query_args = array(
+			'action'                   => $action,
+			'plugin'                   => $plugin_file,
+			'plugintoggle_redirect_to' => $this->get_current_url(),
+		);
 
-	/**
-	 * Enqueue scripts and styles.
-	 *
-	 * @since 1.0.0
-	 */
-	public function enqueue_assets() {
-		// Look ma! No jQuery!
-		wp_enqueue_script( 'plugin-toggle', plugin_dir_url( __FILE__ ) . 'plugin-toggle.js', array(), '1.0.0', true );
-		wp_enqueue_style( 'plugin-toggle', plugin_dir_url( __FILE__ ) . 'plugin-toggle.css' );
+		return wp_nonce_url(
+			add_query_arg( $query_args, self_admin_url( 'plugins.php' )	),
+			$action . '-plugin_' . $plugin_file
+		);
 	}
 
 	/**
@@ -182,10 +197,13 @@ class PluginToggle {
 	 *
 	 * @return array
 	 */
-	public function get_plugins() {
+	protected function get_plugins() {
 		$plugins = get_transient( 'plugintoggle_plugins' );
 
 		if ( ! $plugins ) {
+			if ( ! function_exists( 'get_plugins' ) ) {
+				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			}
 			$plugins = get_plugins();
 
 			// Only the plugin file and name are needed.
@@ -205,7 +223,7 @@ class PluginToggle {
 	 *
 	 * @return string
 	 */
-	public function get_current_url() {
+	protected function get_current_url() {
 		global $wp;
 
 		if ( empty( $this->current_url ) ) {
@@ -215,6 +233,17 @@ class PluginToggle {
 		}
 
 		return $this->current_url;
+	}
+
+	/**
+	 * Enqueue scripts and styles.
+	 *
+	 * @since 1.0.0
+	 */
+	public function enqueue_assets() {
+		// Look ma! No jQuery!
+		wp_enqueue_script( 'plugin-toggle', plugin_dir_url( __FILE__ ) . 'plugin-toggle.js', array(), '1.0.0', true );
+		wp_enqueue_style( 'plugin-toggle', plugin_dir_url( __FILE__ ) . 'plugin-toggle.css' );
 	}
 
 	/**
