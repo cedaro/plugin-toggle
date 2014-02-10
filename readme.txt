@@ -13,7 +13,7 @@ Quickly toggle plugin activation status from the toolbar.
 
 For those times when you're too lazy to visit the Plugins screen to toggle a plugin on or off.
 
-It can also be helpful when troubleshooting:
+It's also helpful when troubleshooting:
 
 > This simple plugin is awesome, especially when it comes to diagnosing problems. One of the tenants of troubleshooting WordPress is to disable every plugin and re-enable them one by one in a process of elimination.
 >
