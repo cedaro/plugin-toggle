@@ -19,6 +19,20 @@
  */
 
 /**
+ * Plugin directory URL.
+ */
+if ( ! defined( 'PLUGINTOGGLE_URL' ) ) {
+	define( 'PLUGINTOGGLE_URL', plugin_dir_url( __FILE__ ) );
+}
+
+/**
+ * Plugin directory path.
+ */
+if ( ! defined( 'PLUGINTOGGLE_DIR' ) ) {
+	define( 'PLUGINTOGGLE_DIR', plugin_dir_path( __FILE__ ) );
+}
+
+/**
  * Include classes.
  */
 require( dirname( __FILE__ ) . '/includes/class-plugintoggle.php' );
