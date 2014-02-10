@@ -25,6 +25,14 @@ class PluginToggle_Toolbar {
 	protected $toolbar;
 
 	/**
+	 * The URL of the current request.
+	 *
+	 * @since 1.1.0
+	 * @type string
+	 */
+	protected $current_url;
+
+	/**
 	 * Constructor method.
 	 *
 	 * @since 1.1.0

@@ -17,14 +17,6 @@
  */
 class PluginToggle {
 	/**
-	 * The URL of the current request.
-	 *
-	 * @since 1.0.0
-	 * @type string
-	 */
-	protected $current_url;
-
-	/**
 	 * Load the plugin.
 	 *
 	 * @since 1.0.0
