@@ -1,6 +1,6 @@
 # Plugin Toggle
 
-Quickly toggle plugin activation status from the toolbar..
+Quickly toggle plugin activation status from the toolbar.
 
 __Contributors:__ [Brady Vercher](https://twitter.com/bradyvercher), [Gary Jones](https://twitter.com/GaryJ)  
 __Requires:__ 3.8  
