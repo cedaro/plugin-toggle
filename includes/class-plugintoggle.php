@@ -65,8 +65,8 @@ class PluginToggle {
 	 */
 	public function enqueue_assets() {
 		// Look ma! No jQuery!
-		wp_enqueue_script( 'plugin-toggle', plugin_dir_url( __FILE__ ) . 'assets/js/plugin-toggle.js', array(), '1.0.0', true );
-		wp_enqueue_style( 'plugin-toggle', plugin_dir_url( __FILE__ ) . 'assets/css/plugin-toggle.css' );
+		wp_enqueue_script( 'plugin-toggle', PLUGINTOGGLE_URL . 'assets/js/plugin-toggle.js', array(), '1.0.0', true );
+		wp_enqueue_style( 'plugin-toggle', PLUGINTOGGLE_URL . 'assets/css/plugin-toggle.css' );
 	}
 
 	/**

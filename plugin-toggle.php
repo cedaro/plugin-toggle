@@ -35,9 +35,9 @@ if ( ! defined( 'PLUGINTOGGLE_DIR' ) ) {
 /**
  * Include classes.
  */
-require( dirname( __FILE__ ) . '/includes/class-plugintoggle.php' );
-require( dirname( __FILE__ ) . '/includes/class-plugintoggle-plugin.php' );
-require( dirname( __FILE__ ) . '/includes/class-plugintoggle-toolbar.php' );
+require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle.php' );
+require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle-plugin.php' );
+require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle-toolbar.php' );
 
 $plugintoggle = new PluginToggle();
 
