@@ -100,7 +100,7 @@ class PluginToggle {
 	protected function get_plugins() {
 		$plugins = get_transient( 'plugintoggle_plugins' );
 
-		if ( ! $plugins ) {
+		if ( ! $plugins || ! ( reset( $plugins ) instanceof PluginToggle_Plugin ) ) {
 			if ( ! function_exists( 'get_plugins' ) ) {
 				require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 			}
