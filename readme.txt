@@ -13,6 +13,18 @@ Quickly toggle plugin activation status from the toolbar.
 
 For those times when you're too lazy to visit the Plugins screen to toggle a plugin on or off.
 
+It can also be helpful when troubleshooting:
+
+> This simple plugin is awesome, especially when it comes to diagnosing problems. One of the tenants of troubleshooting WordPress is to disable every plugin and re-enable them one by one in a process of elimination.
+>
+> Generally, this is accomplished by having the plugin management page in one browser tab with the front end of the website in another.  When a plugin is deactivated, switch browser tabs and refresh to see if the problem disappears. Depending on the speed of your site and the number of plugins installed, this can be a cumbersome experience.
+>
+> -- [Jeff Chandler, *WP Tavern*](http://wptavern.com/plugin-toggle-turns-wordpress-admin-bar-into-shortcut-to-enabledisable-plugins)
+
+Or more succinctly:
+
+> That's cute and really useful for developers. -- [@jason_coleman](https://twitter.com/jason_coleman)
+
 = Additional Resources =
 
 * [Write a review](http://wordpress.org/support/view/plugin-reviews/plugin-toggle#postform)
