@@ -47,7 +47,7 @@ class PluginToggle {
 			return;
 		}
 
-		$toolbar = new PluginToggle_Toolbar( $toolbar, $plugins );
+		new PluginToggle_Toolbar( $toolbar, $plugins );
 	}
 
 	/**
