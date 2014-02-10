@@ -145,13 +145,15 @@ class PluginToggle {
 	}
 
 	/**
-	 * Check if the plugin is network activated, or is a network only plugin and this isn't a network admin screen.
+	 * Check if the plugin is network activated, or is a network only plugin and
+	 * this isn't a network admin screen.
 	 *
 	 * @since 1.1.0
 	 *
 	 * @param string $plugin_file Plugin basename.
 	 *
-	 * @return bool True if plugin is network activated, or is a network only plugin and this isn't a network admin screen.
+	 * @return bool True if plugin is network activated, or is a network only
+	 *              plugin and this isn't a network admin screen.
 	 */
 	protected function is_network_related_plugin( $plugin_file ) {
 		$screen  = is_admin() ? get_current_screen() : '';
