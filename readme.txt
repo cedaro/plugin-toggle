@@ -41,6 +41,9 @@ Install Plugin Toggle like any other plugin. [Check out the codex](http://codex.
 
 == Changelog ==
 
+= 1.1.1 =
+* Prevent a fatal error on activation due to stomping a variable passed by reference.
+
 = 1.1.0 =
 * Refactored the codebase to improve performance and legibility.
 
