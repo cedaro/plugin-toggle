@@ -135,7 +135,7 @@ class PluginToggle_Plugin {
 		);
 
 		if ( ! empty( $redirect ) ) {
-			$query_args['plugintoggle_redirect_to'] = $redirect;
+			$query_args['plugintoggle_redirect_to'] = rawurlencode( $redirect );
 		}
 
 		return wp_nonce_url(
