@@ -37,7 +37,8 @@ class PluginToggle_Toolbar {
 	 *
 	 * @since 1.1.0
 	 *
-	 * @param WP_Admin_Bar $toolbar Toolbar object
+	 * @param WP_Admin_Bar $toolbar Toolbar object.
+	 * @param array        $plugins List of plugins.
 	 */
 	public function __construct( WP_Admin_Bar $toolbar, $plugins ) {
 		$this->toolbar = $toolbar;
