@@ -2,14 +2,19 @@
 	'use strict';
 
 	var document = window.document,
-		container, menuItem, setMaxHeight, toolbarHeight;
+		container, menuItem, setMaxHeight, toolbar, toolbarHeight;
 
 	setMaxHeight = function() {
 		container.style.maxHeight = window.innerHeight - toolbarHeight + 'px';
 	};
 
 	window.addEventListener( 'load', function() {
-		toolbarHeight = document.getElementById( 'wpadminbar' ).clientHeight;
+		toolbar = document.getElementById( 'wpadminbar' );
+		if ( ! toolbar ) {
+			return;
+		}
+
+		toolbarHeight = toolbar.clientHeight;
 		menuItem = document.getElementById( 'wp-admin-bar-plugin-toggle' );
 		container = menuItem.querySelector( '.ab-sub-wrapper' );
 
