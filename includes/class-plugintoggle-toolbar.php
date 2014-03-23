@@ -71,7 +71,7 @@ class PluginToggle_Toolbar {
 	protected function add_top_level_node( $plugin_count ) {
 		$node_args = array(
 			'id'    => 'plugin-toggle',
-			'title' => sprintf( '<span class="ab-icon"></span> <span class="ab-label">%s</span>', __( 'Plugins', 'plugin-toggle' ) ),
+			'title' => sprintf( '<span class="ab-icon"></span> <span class="ab-label">%s</span>', __( 'Plugins' ) ),
 			'href'  => self_admin_url( 'plugins.php' ),
 			'meta'  => array(
 				'class' => ( $plugin_count > 20 ) ? 'has-many' : '',
