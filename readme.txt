@@ -41,6 +41,9 @@ Install Plugin Toggle like any other plugin. [Check out the codex](http://codex.
 
 == Changelog ==
 
+= 1.1.3 =
+* Display an error on the plugins screen if there's an issue during (de)activation.
+
 = 1.1.2 =
 * URL encode redirect URLs to prevent query string conflicts.
 
