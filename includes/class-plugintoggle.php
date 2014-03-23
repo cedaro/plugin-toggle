@@ -70,7 +70,11 @@ class PluginToggle {
 	 * @return string
 	 */
 	public function redirect( $location ) {
-		if ( false !== strpos( $location, 'plugins.php' ) && ! empty( $_REQUEST['plugintoggle_redirect_to'] ) ) {
+		if (
+			false !== strpos( $location, 'plugins.php' ) &&
+			! empty( $_REQUEST['plugintoggle_redirect_to'] ) &&
+			false === strpos( $location, 'error=true' )
+		) {
 			$redirect = rawurldecode( $_REQUEST['plugintoggle_redirect_to'] );
 			$redirect = wp_sanitize_redirect( $redirect );
 			$location = wp_validate_redirect( $redirect, $location );
