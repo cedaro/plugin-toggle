@@ -31,6 +31,11 @@ class PluginToggle {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_filter( 'wp_redirect', array( $this, 'redirect' ), 1 );
 		add_action( 'load-plugins.php', array( $this, 'flush_plugins_cache' ) );
+
+		// Refresh the plugins cache when the plugins directory is changed
+		// or active plugins are modified.
+		add_filter( 'plugintoggle_force_plugins_refresh', array( $this, 'plugins_changed' ) );
+		add_filter( 'plugintoggle_force_plugins_refresh', array( $this, 'active_plugins_changed' ) );
 	}
 
 	/**
@@ -62,7 +67,8 @@ class PluginToggle {
 	}
 
 	/**
-	 * Filter redirects and return back to the URL that was being viewed when a plugin was toggled.
+	 * Filter redirects and return back to the URL that was being viewed when a
+	 * plugin was toggled.
 	 *
 	 * @since 1.0.0
 	 *
@@ -124,5 +130,55 @@ class PluginToggle {
 		}
 
 		return $plugins;
+	}
+
+	/**
+	 * Whether any plugins have been added or removed since last checked.
+	 *
+	 * This is just a basic scan of the top level plugin directory and doesn't
+	 * actually check for valid plugin files.
+	 *
+	 * @since 1.1.4
+	 *
+	 * @param bool $refresh Whether to refresh the plugin cache.
+	 * @return bool
+	 */
+	public function plugins_changed( $refresh ) {
+		$data = scandir( WP_PLUGIN_DIR );
+		return $this->has_changed( 'plugins', $data ) ? true : $refresh;
+	}
+
+	/**
+	 * Whether the active plugins have changed.
+	 *
+	 * @since 1.1.4
+	 *
+	 * @param bool $refresh Whether to refresh the plugin cache.
+	 * @return bool
+	 */
+	public function active_plugins_changed( $refresh ) {
+		$data = (array) get_option( 'active_plugins', array() );
+		return $this->has_changed( 'active_plugins', $data ) ? true : $refresh;
+	}
+
+	/**
+	 * Determine whether data has changed since last checked.
+	 *
+	 * @since 1.1.4
+	 *
+	 * @param string $key An identifier used to store the data hash.
+	 * @param mixed $data Data to compare.
+	 * @return bool
+	 */
+	protected function has_changed( $key, $data ) {
+		$option_name = sprintf( 'plugintoggle_hash-%s', sanitize_key( $key ) );
+		$hash = md5( maybe_serialize( $data ) );
+		$hash_changed = ( get_option( $option_name, '' ) !== $hash );
+
+		if ( $hash_changed ) {
+			update_option( $option_name, $hash );
+		}
+
+		return $hash_changed;
 	}
 }
