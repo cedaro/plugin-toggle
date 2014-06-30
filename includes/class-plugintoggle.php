@@ -158,6 +158,7 @@ class PluginToggle {
 	 */
 	public function active_plugins_changed( $refresh ) {
 		$data = (array) get_option( 'active_plugins', array() );
+		$data = sort( $data );
 		return $this->has_changed( 'active_plugins', $data ) ? true : $refresh;
 	}
 
