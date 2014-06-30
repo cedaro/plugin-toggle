@@ -2,7 +2,7 @@
 Contributors: blazersix, bradyvercher, garyj
 Tags: plugin, toggle, administration, toolbar
 Requires at least: 3.8
-Tested up to: 3.8.1
+Tested up to: 3.9.1
 Stable tag: trunk
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -21,10 +21,6 @@ It's also helpful when troubleshooting:
 >
 > -- [Jeff Chandler, *WP Tavern*](http://wptavern.com/plugin-toggle-turns-wordpress-admin-bar-into-shortcut-to-enabledisable-plugins)
 
-Or more succinctly:
-
-> That's cute and really useful for developers. -- [@jason_coleman](https://twitter.com/jason_coleman)
-
 = Additional Resources =
 
 * [Write a review](http://wordpress.org/support/view/plugin-reviews/plugin-toggle#postform)
@@ -40,6 +36,9 @@ Install Plugin Toggle like any other plugin. [Check out the codex](http://codex.
 1. Toolbar dropdown listing plugins to toggle.
 
 == Changelog ==
+
+= 1.1.4 =
+* Check for changes to the plugins directory or list of active plugins to determine if the cached plugins list should be refreshed.
 
 = 1.1.3 =
 * Display an error on the plugins screen if there's an issue during (de)activation.
