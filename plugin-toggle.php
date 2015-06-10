@@ -41,4 +41,4 @@ require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle-toolbar.php' );
 
 $plugintoggle = new PluginToggle();
 
-add_action( 'plugins_loaded', array( $plugintoggle, 'load_plugin' ) );
+add_action( 'init', array( $plugintoggle, 'load_plugin' ) );
