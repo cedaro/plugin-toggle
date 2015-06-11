@@ -2,7 +2,7 @@
 Contributors: blazersix, bradyvercher, garyj
 Tags: plugin, toggle, administration, toolbar
 Requires at least: 3.8
-Tested up to: 4.1
+Tested up to: 4.2
 Stable tag: trunk
 License: GPL-2.0+
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -36,6 +36,9 @@ Install Plugin Toggle like any other plugin. [Check out the codex](http://codex.
 1. Toolbar dropdown listing plugins to toggle.
 
 == Changelog ==
+
+= 1.1.5 =
+* Set up the plugin on `init` instead of `plugins_loaded` to prevent issues with calling `current_user_can()` too early.
 
 = 1.1.4 =
 * Check for changes to the plugins directory or list of active plugins to determine if the cached plugins list should be refreshed.
