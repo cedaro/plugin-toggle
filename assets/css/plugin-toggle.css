@@ -8,7 +8,7 @@
 }
 
 #wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li .ab-item {
-	opacity: 0.3;
+	opacity: 0.6;
 	overflow: hidden;
 	position: relative;
 	text-overflow: ellipsis;
@@ -17,6 +17,10 @@
 #wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li .ab-item:hover,
 #wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li.is-active .ab-item {
 	opacity: 1;
+}
+
+#wpadminbar .quicklinks #wp-admin-bar-plugin-toggle .ab-submenu li.is-active .ab-item {
+	font-weight: bold;
 }
 
 #wpadminbar .quicklinks #wp-admin-bar-plugin-toggle.has-many {
