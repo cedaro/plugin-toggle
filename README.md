@@ -3,8 +3,8 @@
 Quickly toggle plugin activation status from the toolbar.
 
 __Contributors:__ [Brady Vercher](https://twitter.com/bradyvercher), [Gary Jones](https://twitter.com/GaryJ)  
-__Requires:__ 3.8  
-__Tested up to:__ 4.2  
+__Requires:__ 4.0  
+__Tested up to:__ 4.3  
 __License:__ [GPL-2.0+](http://www.gnu.org/licenses/gpl-2.0.html)
 
 For those times when you're too lazy to visit the Plugins screen to toggle a plugin on or off.

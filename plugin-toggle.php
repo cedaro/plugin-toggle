@@ -11,7 +11,7 @@
  * Plugin Name: Plugin Toggle
  * Plugin URI: http://www.blazersix.com/
  * Description: Quickly toggle plugin activation status from the toolbar.
- * Version: 1.1.5
+ * Version: 1.1.6
  * Author: Blazer Six
  * Author URI: http://www.blazersix.com/
  * License: GPL-2.0+
