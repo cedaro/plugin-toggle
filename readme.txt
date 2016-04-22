@@ -1,7 +1,7 @@
 === Plugin Toggle ===
 Contributors: blazersix, bradyvercher, garyj
 Tags: plugin, toggle, administration, toolbar
-Requires at least: 4.0
+Requires at least: 4.3
 Tested up to: 4.5
 Stable tag: trunk
 License: GPL-2.0+
@@ -37,6 +37,10 @@ Install Plugin Toggle like any other plugin. [Check out the codex](http://codex.
 
 == Changelog ==
 
+= 1.2.0 =
+* Internationalize the plugin to add support for language packs.
+* Only load JavaScript and CSS files on the frontend when the toolbar is enabled.
+
 = 1.1.6 =
 * Increase the opacity of inactive plugins and bold active plugins to improve legibility.
 
@@ -58,5 +62,5 @@ Install Plugin Toggle like any other plugin. [Check out the codex](http://codex.
 = 1.1.0 =
 * Refactored the codebase to improve performance and legibility.
 
-= 1.0 =
+= 1.0.0 =
 * Initial release.
