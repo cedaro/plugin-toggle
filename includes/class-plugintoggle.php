@@ -27,8 +27,7 @@ class PluginToggle {
 		}
 
 		add_action( 'admin_bar_menu', array( $this, 'setup_toolbar' ), 100 );
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
-		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'admin_bar_init', array( $this, 'enqueue_assets' ) );
 		add_filter( 'wp_redirect', array( $this, 'redirect' ), 1 );
 		add_action( 'load-plugins.php', array( $this, 'flush_plugins_cache' ) );
 
