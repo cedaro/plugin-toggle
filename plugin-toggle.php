@@ -17,7 +17,6 @@
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: plugin-toggle
- * Domain Path: /languages
  */
 
 /**
@@ -47,8 +46,7 @@ require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle-toolbar.php' );
  * @since 1.2.0
  */
 function plugintoggle_load_textdomain() {
-	$plugin_rel_path = dirname( plugin_basename( __FILE__ ) ) . '/languages';
-	load_plugin_textdomain( 'plugin-toggle', false, $plugin_rel_path );
+	load_plugin_textdomain( 'plugin-toggle' );
 }
 add_action( 'plugins_loaded', 'plugintoggle_load_textdomain' );
 
