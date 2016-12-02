@@ -9,11 +9,11 @@
  *
  * @wordpress-plugin
  * Plugin Name: Plugin Toggle
- * Plugin URI:  https://wordpress.org/plugins/plugin-toggle/
+ * Plugin URI:  https://wordpress.org/plugins/plugin-toggle/?utm_source=wordpress-plugin&utm_medium=link&utm_content=plugin-toggle-plugin-uri&utm_campaign=plugins
  * Description: Quickly toggle plugin activation status from the toolbar.
- * Version:     1.2.0
+ * Version:     1.3.0
  * Author:      Cedaro
- * Author URI:  https://www.cedaro.com/
+ * Author URI:  https://www.cedaro.com/?utm_source=wordpress-plugin&utm_medium=link&utm_content=plugin-toggle-author-uri&utm_campaign=plugins
  * License:     GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: plugin-toggle

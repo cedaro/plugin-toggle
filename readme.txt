@@ -2,9 +2,9 @@
 
 Contributors: cedaro, bradyvercher, garyj
 Tags: plugin, toggle, administration, toolbar
-Requires at least: 4.3
-Tested up to: 4.5
-Stable tag: trunk
+Requires at least: 4.4
+Tested up to: 4.7
+Stable tag: 1.3.0
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,6 +38,11 @@ Install Plugin Toggle like any other plugin. [Check out the codex](https://codex
 1. Toolbar dropdown listing plugins to toggle.
 
 ## Changelog
+
+### 1.3.0 - December 1, 2016
+* Transferred to [Cedaro](https://www.cedaro.com/).
+* Removed the call to `load_plugin_textdomain()` in favor of [just-in-time text domain loading](https://make.wordpress.org/core/2016/07/06/i18n-improvements-in-4-6/) available sine WordPress 4.6.
+* Updated URLs to https where possible.
 
 ### 1.2.0
 * Internationalize the plugin to add support for language packs.
