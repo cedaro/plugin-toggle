@@ -4,7 +4,7 @@
  *
  * @package PluginToggle
  * @author Brady Vercher
- * @copyright Copyright (c) 2014, Blazer Six, Inc.
+ * @copyright Copyright (c) 2016, Cedaro, LLC
  * @license GPL-2.0+
  * @since 1.1.0
  */

@@ -4,17 +4,17 @@
  *
  * @package PluginToggle
  * @author Brady Vercher
- * @copyright Copyright (c) 2014, Blazer Six, Inc.
+ * @copyright Copyright (c) 2016, Cedaro, LLC
  * @license GPL-2.0+
  *
  * @wordpress-plugin
  * Plugin Name: Plugin Toggle
- * Plugin URI: http://www.blazersix.com/
+ * Plugin URI:  https://wordpress.org/plugins/plugin-toggle/
  * Description: Quickly toggle plugin activation status from the toolbar.
- * Version: 1.2.0
- * Author: Blazer Six
- * Author URI: http://www.blazersix.com/
- * License: GPL-2.0+
+ * Version:     1.2.0
+ * Author:      Cedaro
+ * Author URI:  https://www.cedaro.com/
+ * License:     GPL-2.0+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: plugin-toggle
  */

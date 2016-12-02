@@ -1,22 +1,22 @@
 {
-	"name": "bradyvercher/plugin-toggle",
-	"description": "A WordPress plugin to quickly toggle plugin activation status from the toolbar.",
-	"keywords": ["wordpress"],
-	"type": "wordpress-plugin",
-	"homepage": "https://github.com/bradyvercher/plugin-toggle",
-	"license": "GPL-2.0+",
-	"authors": [
-		{
-			"name": "Brady Vercher",
-			"email": "brady@blazersix.com",
-			"homepage": "http://www.blazersix.com/"
-		}
-	],
-	"support": {
-		"issues": "https://github.com/bradyvercher/plugin-toggle/issues",
-		"source": "https://github.com/bradyvercher/plugin-toggle"
-	},
-	"require": {
-		"composer/installers": "~1.0"
-	}
+  "name": "cedaro/plugin-toggle",
+  "description": "A WordPress plugin to quickly toggle plugin activation status from the toolbar.",
+  "keywords": [ "wordpress" ],
+  "type": "wordpress-plugin",
+  "homepage": "https://github.com/cedaro/plugin-toggle",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "Brady Vercher",
+      "email": "brady@blazersix.com",
+      "homepage": "https://www.cedaro.com/"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/cedaro/plugin-toggle/issues",
+    "source": "https://github.com/cedaro/plugin-toggle"
+  },
+  "require": {
+    "composer/installers": "~1.0"
+  }
 }
