@@ -40,16 +40,6 @@ require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle.php' );
 require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle-plugin.php' );
 require( PLUGINTOGGLE_DIR . 'includes/class-plugintoggle-toolbar.php' );
 
-/**
- * Localize the plugin.
- *
- * @since 1.2.0
- */
-function plugintoggle_load_textdomain() {
-	load_plugin_textdomain( 'plugin-toggle' );
-}
-add_action( 'plugins_loaded', 'plugintoggle_load_textdomain' );
-
 $plugintoggle = new PluginToggle();
 
 add_action( 'init', array( $plugintoggle, 'load_plugin' ) );
