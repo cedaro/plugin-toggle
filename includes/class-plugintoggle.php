@@ -29,6 +29,7 @@ class PluginToggle {
 		add_action( 'admin_bar_menu', array( $this, 'setup_toolbar' ), 100 );
 		add_action( 'admin_bar_init', array( $this, 'enqueue_assets' ) );
 		add_filter( 'wp_redirect', array( $this, 'redirect' ), 1 );
+		add_action( 'admin_page_access_denied', array( $this, 'redirect_disabled_screen' ) );
 		add_action( 'load-plugins.php', array( $this, 'flush_plugins_cache' ) );
 
 		// Refresh the plugins cache when the plugins directory is changed
@@ -83,9 +84,38 @@ class PluginToggle {
 			$redirect = rawurldecode( $_REQUEST['plugintoggle_redirect_to'] );
 			$redirect = wp_sanitize_redirect( $redirect );
 			$location = wp_validate_redirect( $redirect, $location );
+
+			// Attempt to redirect if the user lands on an error page.
+			if ( 'deactivate' === $_REQUEST['action'] ) {
+				$location = add_query_arg( 'plugintoggle_revive', wp_create_nonce( 'revive' ), $location );
+			}
 		}
 
 		return $location;
+	}
+
+	/**
+	 * Prevent the wp_die() error page from displaying for disabled screens.
+	 *
+	 * If a plugin is deactivated while viewing an admin screen registered by
+	 * the plugin, users will be dumped on an error page without an easy way to
+	 * return to the admin panel.
+	 *
+	 * This attempts to detect that scenario and redirects the user to the
+	 * Manage Plugins screen instead.
+	 *
+	 * @since 1.3.1
+	 */
+	public function redirect_disabled_screen() {
+		if (
+			empty( $_GET['plugintoggle_revive'] ) ||
+			! wp_verify_nonce( $_GET['plugintoggle_revive'], 'revive' )
+		) {
+			return;
+		}
+
+		wp_safe_redirect( self_admin_url( 'plugins.php' ) );
+		exit;
 	}
 
 	/**
