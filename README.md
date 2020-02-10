@@ -2,9 +2,7 @@
 
 Quickly toggle plugin activation status from the toolbar.
 
-__Contributors:__ [Brady Vercher](https://twitter.com/bradyvercher), [Gary Jones](https://twitter.com/GaryJ)  
-__Requires:__ 4.4  
-__Tested up to:__ 4.7  
+__Contributors:__ [Brady Vercher](https://twitter.com/bradyvercher), [Gary Jones](https://twitter.com/GaryJ)
 __License:__ [GPL-2.0+](https://www.gnu.org/licenses/gpl-2.0.html)
 
 For those times when you're too lazy to visit the Plugins screen to toggle a plugin on or off.
@@ -20,6 +18,6 @@ It's also helpful when troubleshooting:
 ![Plugin Dropdown Screenshot](https://raw.github.com/bradyvercher/plugin-toggle/master/screenshot-1.png)
 _Toolbar dropdown listing plugins to toggle._
 
-## Installation ##
+## Installation
 
 Plugin Toggle is available in the [WordPress plugin repository](https://wordpress.org/plugins/plugin-toggle/), so it can be installed from within your admin panel.

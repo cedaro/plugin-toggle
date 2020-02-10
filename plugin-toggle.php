@@ -9,7 +9,7 @@
  *
  * @wordpress-plugin
  * Plugin Name: Plugin Toggle
- * Plugin URI:  https://wordpress.org/plugins/plugin-toggle/?utm_source=wordpress-plugin&utm_medium=link&utm_content=plugin-toggle-plugin-uri&utm_campaign=plugins
+ * Plugin URI:  https://wordpress.org/plugins/plugin-toggle/
  * Description: Quickly toggle plugin activation status from the toolbar.
  * Version:     1.3.1
  * Author:      Cedaro
