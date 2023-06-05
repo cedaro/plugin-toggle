@@ -3,7 +3,7 @@
 Contributors: cedaro, bradyvercher, garyj
 Tags: plugin, toggle, administration, toolbar
 Requires at least: 4.7
-Tested up to: 5.7
+Tested up to: 6.2
 Stable tag: 1.3.1
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
