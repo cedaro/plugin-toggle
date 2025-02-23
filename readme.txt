@@ -1,7 +1,7 @@
 # Plugin Toggle
 
 Contributors: cedaro, bradyvercher, garyj
-Tags: plugin, toggle, administration, toolbar
+Tags: toggle, administration, toolbar
 Requires at least: 4.7
 Tested up to: 6.7
 Stable tag: 1.3.1
